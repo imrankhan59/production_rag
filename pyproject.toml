@@ -1,0 +1,35 @@
+[project]
+name = "rag-project"
+version = "0.1.0"
+description = "Retrieval-Augmented Generation (RAG) project"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.18.5",
+    "azure-identity>=1.25.3",
+    "azure-storage-blob>=12.30.0",
+    "celery>=5.6.3",
+    "psycopg[binary]>=3.3.4",
+    "pydantic-settings>=2.14.2",
+    "python-dotenv>=1.2.2",
+    "sqlalchemy>=2.0.51",
+    "watchdog>=6.0.0",
+]
+
+[project.scripts]
+rag = "rag_project.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+sources = ["src"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
